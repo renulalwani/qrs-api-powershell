@@ -1,4 +1,4 @@
-# This project is provided "AS IS", without any warranty, under the MIT License
+# This script is provided "AS IS", without any warranty, under the MIT License
 # See the https://github.com/tonikautto/qrs-api-powershell/blob/master/LICENSE for details
 # Copyright (c) 2020 Toni Kautto
 
@@ -6,12 +6,17 @@
 # QRS API - About: Get https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/RepositoryServiceAPI/Content/Sense_RepositoryServiceAPI/RepositoryServiceAPI-About-Get.htm
 # XrfKey; https://help.qlik.com/en-US/sense-developer/Subsystems/RepositoryServiceAPI/Content/Sense_RepositoryServiceAPI/RepositoryServiceAPI-Connect-API-Using-Xrfkey-Headers.htm
 
-# FQDN to Qlik Sense central node
-$FQDN = "qlikserver.domain.local"
-
-# User credentials to use for authetication
-$UserName   = "Administrator"
-$UserDomain = "Domain"
+# Paramters for REST API call
+# Qlik Sense node to make API call to
+# User ID to use for authorization
+param (
+    [Parameter(Mandatory=$true)]
+    [string] $FQDN       = "qlikserver.domain.local",   
+    [Parameter(Mandatory=$true)]
+    [string] $UserName   = "administrator",             
+    [Parameter(Mandatory=$true)]
+    [string] $UserDomain = "domain"
+)
 
 # Qlik Sense client certificate to be used for connection authentication
 # Note, certificate lookup must return only one certificate. 
